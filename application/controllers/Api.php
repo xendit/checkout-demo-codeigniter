@@ -27,11 +27,19 @@ class Api extends CI_Controller {
 
 		$params = array_merge($defParams, $post);
 
-		Xendit::setApiKey($apiKey);
-		$createdInvoice = \Xendit\Invoice::create($params);
-
 		header('Content-Type: application/json');
 
-		echo json_encode($createdInvoice);
+		$response = [];
+
+        try {
+            Xendit::setApiKey($apiKey);
+
+            $response = \Xendit\Invoice::create($params);
+        } catch (\Exception $e) {
+            http_response_code(501);
+            $response['message'] = $e->getMessage();
+        }
+
+        echo json_encode($response);
 	}
 }
