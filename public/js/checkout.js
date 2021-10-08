@@ -143,7 +143,7 @@
             const invoiceData = {
                 currency,
                 amount,
-                redirect_url: `${window.location.origin}/index.php/try-checkout`
+                redirect_url: `${window.location.origin}/index.php/checkout/try_checkout`
             };
 
             // create an invoice for store checkout

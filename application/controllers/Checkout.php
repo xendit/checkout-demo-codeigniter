@@ -9,5 +9,5 @@ class Checkout extends CI_Controller {
 
     public function try_checkout() {
         $this->load->view('v1/checkout/try-checkout.php');
-	}
+    }
 }
